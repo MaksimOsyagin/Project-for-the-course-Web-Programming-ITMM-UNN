@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Генерация формы</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		body{
+			background: linear-gradient(45deg, #EECFBA, #C5DDE8);
+			min-height: 600px;
+
+		}
+		#div-form{
+			background-color: rgba(26, 26, 26, 0.1);
+			margin: 10% 25% 0 25%;
+			padding: 30px 2%;
+			text-align: center;
+			-moz-border-radius: 10px;
+			-webkit-border-radius: 10px;
+  			border-radius: 10px;
+			-moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+			-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+  			box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+		}
+		input{
+			width:80%;
+			height: 40px;
+			margin:10px 0;
+		}
+
+	</style>
+</head>
+<body>
+	
+<div id="div-form">
+
+	<form action="" id="form">
+	</form>
+
+	<script type="text/javascript">
+		var mess = "Введите через запятую названия элементов управления для генерации формы(text, number,date или color). Пример 'text, color, date, number':";
+		var inputResult = prompt(mess, "Введите текст");
+		var inputResultMass = inputResult.split(', ');
+		var form = document.getElementById('form')
+		for(var i = 0;i<inputResultMass.length; i++){
+			switch(inputResultMass[i]){
+				case "color":
+					var newInput = document.createElement('input');
+					newInput.type = "color";
+					form.appendChild(newInput);
+					break;
+				case "text":
+					var newInput = document.createElement('input');
+					newInput.type = "text";
+					form.appendChild(newInput);
+					break;
+				case "number":
+					var newInput = document.createElement('input');
+					newInput.type = "number";
+					form.appendChild(newInput);
+					break;
+				case "date":
+					var newInput = document.createElement('input');
+					newInput.type = "date";
+					form.appendChild(newInput);
+					break;
+				default:
+					var messErr = 'Элемент под номером ' + (i+1) +' был введен не корректно(возможно была пропущена запятая, либо неверно введено название элемента)! Перезагрузите страницу и попробуйте снова.'
+					alert(messErr);
+			}
+		}
+	</script>
+</body>
+</html>
